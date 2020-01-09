@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class RegisterFormService {
   // path
-  urlPrincipal = 'http://localhost/api-laravel/apiRest/public/api/';
+  urlPrincipal = '  http://localhost:8000/api/';
 
   constructor(private httpClient: HttpClient) { }
   // create customer
-  addCustomer(firstName: string, lastName: string, email: string ): Observable<any> {
-    console.log(firstName,lastName,email);
-    let jsonCustomer = {firstname: firstName, lastname: lastName, email: email};
+  addCustomer(firstName: string, lastName: string, email: string,cc: number , dob:Date,country:number, city:number): Observable<any> {
+    console.log(firstName,lastName,email,cc,dob, country, city);
+    let jsonCustomer = {firstname: firstName, lastname: lastName, email: email,cc:cc,dob:dob,country:country,city:city };
 
     return this.httpClient.post(
       this.urlPrincipal + 'customer', jsonCustomer );

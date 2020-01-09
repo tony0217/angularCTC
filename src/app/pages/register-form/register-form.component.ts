@@ -26,6 +26,10 @@ export class RegisterFormComponent implements OnInit {
   firstName: string;
   lastName: string;
   email: string;
+  cc: number;
+  dob:Date;
+  country: number;
+  city: number;
   captchaResponse: string = '';
   formCustomer: FormGroup;
   submitted = false;
@@ -36,7 +40,11 @@ export class RegisterFormComponent implements OnInit {
     this.formCustomer = this.FormBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: [''],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      cc: [''],
+      dob:[''],
+      country: [''],
+      city: ['']
     });
 
 
@@ -46,13 +54,13 @@ export class RegisterFormComponent implements OnInit {
 
 
   // created customer
-  addCustomer(firstName: string, lastName: string, email: string) {
+  addCustomer(firstName: string, lastName: string, email: string, cc: number , dob:Date,country:number, city:number) {
     this.submitted = true;
     if (this.formCustomer.invalid || this.captchaResponse == '') {
       return;
     } else {
 
-      this._RegisterFormService.addCustomer(firstName, lastName, email).subscribe(result => {
+      this._RegisterFormService.addCustomer(firstName, lastName, email,cc,dob, country, city).subscribe(result => {
         let res = result;
         if (res != null) {
           console.log(res);

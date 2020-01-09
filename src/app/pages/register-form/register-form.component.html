@@ -14,7 +14,7 @@
 
             <h4 class="ribbon ribbon-bookmark ribbon-success">ADD CUSTOMER</h4>
             <h6 class="ribbon-content">add New Customer</h6>
-            <form class="form p-t-20" [formGroup]='formCustomer'  (ngSubmit)="addCustomer(firstName, lastName, email)" >
+            <form class="form p-t-20" [formGroup]='formCustomer'  (ngSubmit)="addCustomer(firstName, lastName, email,cc,dob, country, city)" >
 
                 <div class="form-group">
                     <label for="exampleInputuname">FirstName <span class="text-danger">*</span></label>
@@ -44,6 +44,24 @@
                         </div>
                     </div>
                 </div>
+
+
+          <div class="form-group">
+            <label for="exampleInputuname">Cedula </label>
+            <div class="input-group ">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input [value]="cc" formControlName="cc" [(ngModel)]="cc" type="number"
+                class="form-control" placeholder="Cedula">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="exampleInputuname">F.Nacimiento</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-calendar"></i></div>
+              <input [value]="dob" formControlName="dob" [(ngModel)]="dob" type="date" class="form-control" placeholder="yyyy/mm/dd">
+            </div>
+        </div>
 
                 <div class="form-group">
                   <re-captcha (resolved)="resolved($event)" siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>

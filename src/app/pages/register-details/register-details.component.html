@@ -32,6 +32,11 @@
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Email</th>
+                <th>Cédula</th>
+                <th>F.Nacimiento</th>
+                <th>País</th>
+                <th>Ciudad</th>
+
                 <th>Creation_date</th>
                 <th>Update_date</th>
                 <th class="text-nowrap">Acction</th>
@@ -39,9 +44,13 @@
             </thead>
             <tfoot>
               <tr>
-                <th>FirstName</th>
-                <th>LastName</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
+                <th>Cédula</th>
+                <th>F.Nacimiento</th>
+                <th>País</th>
+                <th>Ciudad</th>
                 <th>Creation_date</th>
                 <th>Update_date</th>
                 <th class="text-nowrap">Acction</th>
@@ -56,6 +65,10 @@
                 <td>{{customer.firstname|uppercase}}</td>
                 <td>{{customer.lastname|uppercase}}</td>
                 <td>{{customer.email}}</td>
+                <td>{{customer.cc}}</td>
+                <td>{{customer.dob|date:'MMM d y'}}</td>
+                <td>{{customer.country}}</td>
+                <td>{{customer.city}}</td>
                 <td>{{customer.created|date:'MMM d y h:mm:ss a'}}</td>
                 <td>{{customer.modified|date:'MMM d y h:mm:ss a'}}</td>
                 <td class="text-nowrap">
@@ -97,10 +110,10 @@
       </div>
       <div class="modal-body">
         <form class="form p-t-20" [formGroup]='formCustomerUpdate'
-          (ngSubmit)="upDateCustomer(id,firstName, lastName, email)">
+          (ngSubmit)="upDateCustomer(id,firstName, lastName, email,cc,dob,country,city)">
 
           <div class="form-group">
-            <label for="exampleInputuname">FirstName <span class="text-danger">*</span></label>
+            <label for="exampleInputuname">Nombre <span class="text-danger">*</span></label>
             <div class="input-group controls">
               <div class="input-group-addon"><i class="ti-user"></i></div>
               <input [value]="firstName" formControlName="firstName" [(ngModel)]="firstName" type="text"
@@ -112,13 +125,14 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="exampleInputuname">LastName </label>
+            <label for="exampleInputuname">Apellido </label>
             <div class="input-group ">
               <div class="input-group-addon"><i class="ti-user"></i></div>
               <input [value]="lastName" formControlName="lastName" [(ngModel)]="lastName" type="text"
                 class="form-control" placeholder="LastName">
             </div>
           </div>
+
           <div class="form-group">
             <label for="exampleInputEmail1">Email address<span class="text-danger">*</span></label>
             <div class="input-group controls">
@@ -132,6 +146,23 @@
               </div>
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="exampleInputuname">Cedula </label>
+            <div class="input-group ">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input [value]="cc" formControlName="cc" [(ngModel)]="cc" type="number"
+                class="form-control" placeholder="Cedula">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="exampleInputuname">F.Nacimiento</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-calendar"></i></div>
+              <input [value]="dob" formControlName="dob" [(ngModel)]="dob" type="date" class="form-control" placeholder="yyyy/mm/dd">
+            </div>
+        </div>
 
           <div class="form-group">
             <re-captcha (resolved)="resolved($event)" siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>

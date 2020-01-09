@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RegisterDetailsService {
   // path
-  urlPrincipal = 'http://localhost/api-laravel/apiRest/public/api/';
+  urlPrincipal = 'http://localhost:8000/api/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,13 +18,10 @@ export class RegisterDetailsService {
     );
   }
   // update customer
-  upDateCustomer(id: number, firstName: string, lastName: string, email: string): Observable<any> {
+  upDateCustomer(id: number, firstName: string, lastName: string, email: string, cc: number ,dob: Date, country:number, city:number): Observable<any> {
     console.log(id, firstName, lastName, email);
-    let lastnameValid = lastName == '------------' || lastName == null || lastName == '';
-    if (lastnameValid) {
-      lastName = '------------'
-    }
-    let jsonCustomer = { firstname: firstName, lastname: lastName, email: email };
+
+    let jsonCustomer = { firstname: firstName, lastname: lastName, email: email,cc:cc,dob:dob,country:country,city:city };
     return this.httpClient.put(
       this.urlPrincipal + 'customer/' + id, jsonCustomer);
   }

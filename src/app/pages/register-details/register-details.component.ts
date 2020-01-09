@@ -28,6 +28,10 @@ export class RegisterDetailsComponent implements OnInit {
   firstName: string;
   lastName: string;
   email: string;
+  cc: number;
+  dob:Date;
+  country: number;
+  city: number;
   captchaResponse: string = '';
   formCustomerUpdate: FormGroup;
   toastMs:boolean = true;
@@ -40,7 +44,12 @@ export class RegisterDetailsComponent implements OnInit {
     this.formCustomerUpdate = this.FormBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: [''],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      cc:[''],
+      country:[''],
+      city:[''],
+      dob:['']
+
     });
 
   }
@@ -67,19 +76,24 @@ export class RegisterDetailsComponent implements OnInit {
     this.firstName = this.customerSelect['firstname'];
     this.lastName = this.customerSelect['lastname'];
     this.email = this.customerSelect['email'];
+    this.cc = this.customerSelect['cc'];
+    this.dob = this.customerSelect['dob'];
+    this.country = this.customerSelect['country'];
+    this.city = this.customerSelect['city'];
     console.log(this.customerSelect);
   }
 
 
   // update a customer
-  upDateCustomer(id: number, firstName: string, lastName: string, email: string) {
-    console.log(id, firstName, lastName, email);
+  upDateCustomer(id: number, firstName: string, lastName: string, email: string, cc: number , dob:Date,country:number, city:number) {
+    console.log(id, firstName, lastName, email,cc,dob,country, city);
+
     this.submitted = true;
     if (this.formCustomerUpdate.invalid || this.captchaResponse == '') {
       return;
     } else {
 
-      this._RegisterDetailsService.upDateCustomer(id, firstName, lastName, email).subscribe(result => {
+      this._RegisterDetailsService.upDateCustomer(id, firstName, lastName, email,cc,dob, country, city).subscribe(result => {
         let res = result;
         if (res != null) {
           console.log(res);
@@ -100,7 +114,7 @@ export class RegisterDetailsComponent implements OnInit {
   deleteCustomer(id: number) {
     this._RegisterDetailsService.deleteCustomer(id).subscribe(result => {
         console.log('fue eliminado');
-        location.reload();
+         location.reload();
         //window.location.replace('http://localhost/api-laravel/apiRest/public/frontLaravel/');
     }, error => {
       console.log(JSON.stringify(error));

@@ -17,7 +17,7 @@ const routes: Routes = [
     {path:'form', component: RegisterFormComponent},
 
 
-    {path:'',redirectTo:'/details' , pathMatch: 'full'},
+    {path:'',redirectTo:'/dashboard' , pathMatch: 'full'},
     {path:'**', component: NotFound404Component},
   ]
 },

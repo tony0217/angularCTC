@@ -1,7 +1,7 @@
 <div class="preloader">
   <div class="loader">
       <div class="loader__figure"></div>
-      <p class="loader__label">BVentures</p>
+      <p class="loader__label">CLOUD TECHNOLOGYS CENTER</p>
   </div>
 </div>
 
@@ -17,20 +17,20 @@
             <form class="form p-t-20" [formGroup]='formCustomer'  (ngSubmit)="addCustomer(firstName, lastName, email,cc,dob, country, city)" >
 
                 <div class="form-group">
-                    <label for="exampleInputuname">FirstName <span class="text-danger">*</span></label>
+                    <label for="exampleInputuname">Nombre <span class="text-danger">*</span></label>
                     <div class="input-group controls">
                         <div class="input-group-addon"><i class="ti-user"></i></div>
-                        <input  formControlName="firstName"  [(ngModel)]="firstName"  type="text"[ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"  class="form-control"  placeholder="FirstName" >
+                        <input  formControlName="firstName"  [(ngModel)]="firstName"  type="text"[ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"  class="form-control"  placeholder="Nombre" >
                         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                           <div *ngIf="f.firstName.errors.required">First Name is required</div>
                       </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputuname">LastName </label>
+                    <label for="exampleInputuname">Apellido </label>
                     <div class="input-group ">
                         <div class="input-group-addon"><i class="ti-user"></i></div>
-                        <input  formControlName="lastName"  [(ngModel)]="lastName"  type="text"  class="form-control"  placeholder="LastName" >
+                        <input  formControlName="lastName"  [(ngModel)]="lastName"  type="text"  class="form-control"  placeholder="Apellido" >
                     </div>
                 </div>
                 <div class="form-group">
